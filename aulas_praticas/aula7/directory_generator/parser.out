@@ -1,0 +1,151 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> Z
+Rule 1     Z -> Dir
+Rule 2     Dir -> ( texto Conteudo )
+Rule 3     Dir -> Ficheiro
+Rule 4     Conteudo -> Conteudo Dir
+Rule 5     Conteudo -> <empty>
+Rule 6     Ficheiro -> [ texto texto ]
+
+Terminals, with rules where they appear
+
+(                    : 2
+)                    : 2
+[                    : 6
+]                    : 6
+error                : 
+texto                : 2 6 6
+
+Nonterminals, with rules where they appear
+
+Conteudo             : 2 4
+Dir                  : 1 4
+Ficheiro             : 3
+Z                    : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Z
+    (1) Z -> . Dir
+    (2) Dir -> . ( texto Conteudo )
+    (3) Dir -> . Ficheiro
+    (6) Ficheiro -> . [ texto texto ]
+
+    (               shift and go to state 3
+    [               shift and go to state 5
+
+    Z                              shift and go to state 1
+    Dir                            shift and go to state 2
+    Ficheiro                       shift and go to state 4
+
+state 1
+
+    (0) S' -> Z .
+
+
+
+state 2
+
+    (1) Z -> Dir .
+
+    $end            reduce using rule 1 (Z -> Dir .)
+
+
+state 3
+
+    (2) Dir -> ( . texto Conteudo )
+
+    texto           shift and go to state 6
+
+
+state 4
+
+    (3) Dir -> Ficheiro .
+
+    $end            reduce using rule 3 (Dir -> Ficheiro .)
+    )               reduce using rule 3 (Dir -> Ficheiro .)
+    (               reduce using rule 3 (Dir -> Ficheiro .)
+    [               reduce using rule 3 (Dir -> Ficheiro .)
+
+
+state 5
+
+    (6) Ficheiro -> [ . texto texto ]
+
+    texto           shift and go to state 7
+
+
+state 6
+
+    (2) Dir -> ( texto . Conteudo )
+    (4) Conteudo -> . Conteudo Dir
+    (5) Conteudo -> .
+
+    )               reduce using rule 5 (Conteudo -> .)
+    (               reduce using rule 5 (Conteudo -> .)
+    [               reduce using rule 5 (Conteudo -> .)
+
+    Conteudo                       shift and go to state 8
+
+state 7
+
+    (6) Ficheiro -> [ texto . texto ]
+
+    texto           shift and go to state 9
+
+
+state 8
+
+    (2) Dir -> ( texto Conteudo . )
+    (4) Conteudo -> Conteudo . Dir
+    (2) Dir -> . ( texto Conteudo )
+    (3) Dir -> . Ficheiro
+    (6) Ficheiro -> . [ texto texto ]
+
+    )               shift and go to state 10
+    (               shift and go to state 3
+    [               shift and go to state 5
+
+    Dir                            shift and go to state 11
+    Ficheiro                       shift and go to state 4
+
+state 9
+
+    (6) Ficheiro -> [ texto texto . ]
+
+    ]               shift and go to state 12
+
+
+state 10
+
+    (2) Dir -> ( texto Conteudo ) .
+
+    $end            reduce using rule 2 (Dir -> ( texto Conteudo ) .)
+    )               reduce using rule 2 (Dir -> ( texto Conteudo ) .)
+    (               reduce using rule 2 (Dir -> ( texto Conteudo ) .)
+    [               reduce using rule 2 (Dir -> ( texto Conteudo ) .)
+
+
+state 11
+
+    (4) Conteudo -> Conteudo Dir .
+
+    )               reduce using rule 4 (Conteudo -> Conteudo Dir .)
+    (               reduce using rule 4 (Conteudo -> Conteudo Dir .)
+    [               reduce using rule 4 (Conteudo -> Conteudo Dir .)
+
+
+state 12
+
+    (6) Ficheiro -> [ texto texto ] .
+
+    $end            reduce using rule 6 (Ficheiro -> [ texto texto ] .)
+    )               reduce using rule 6 (Ficheiro -> [ texto texto ] .)
+    (               reduce using rule 6 (Ficheiro -> [ texto texto ] .)
+    [               reduce using rule 6 (Ficheiro -> [ texto texto ] .)
+

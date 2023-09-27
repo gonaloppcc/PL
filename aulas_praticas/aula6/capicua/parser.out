@@ -1,0 +1,130 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> capicua
+Rule 1     capicua -> z capicua z
+Rule 2     capicua -> u capicua u
+Rule 3     capicua -> z
+Rule 4     capicua -> u
+Rule 5     capicua -> <empty>
+
+Terminals, with rules where they appear
+
+error                : 
+u                    : 2 2 4
+z                    : 1 1 3
+
+Nonterminals, with rules where they appear
+
+capicua              : 1 2 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . capicua
+    (1) capicua -> . z capicua z
+    (2) capicua -> . u capicua u
+    (3) capicua -> . z
+    (4) capicua -> . u
+    (5) capicua -> .
+
+    z               shift and go to state 2
+    u               shift and go to state 3
+    $end            reduce using rule 5 (capicua -> .)
+
+    capicua                        shift and go to state 1
+
+state 1
+
+    (0) S' -> capicua .
+
+
+
+state 2
+
+    (1) capicua -> z . capicua z
+    (3) capicua -> z .
+    (1) capicua -> . z capicua z
+    (2) capicua -> . u capicua u
+    (3) capicua -> . z
+    (4) capicua -> . u
+    (5) capicua -> .
+
+  ! shift/reduce conflict for z resolved as shift
+  ! shift/reduce conflict for u resolved as shift
+  ! shift/reduce conflict for z resolved as shift
+    $end            reduce using rule 3 (capicua -> z .)
+    z               shift and go to state 2
+    u               shift and go to state 3
+
+  ! z               [ reduce using rule 3 (capicua -> z .) ]
+  ! u               [ reduce using rule 3 (capicua -> z .) ]
+  ! z               [ reduce using rule 5 (capicua -> .) ]
+
+    capicua                        shift and go to state 4
+
+state 3
+
+    (2) capicua -> u . capicua u
+    (4) capicua -> u .
+    (1) capicua -> . z capicua z
+    (2) capicua -> . u capicua u
+    (3) capicua -> . z
+    (4) capicua -> . u
+    (5) capicua -> .
+
+  ! shift/reduce conflict for z resolved as shift
+  ! shift/reduce conflict for u resolved as shift
+  ! shift/reduce conflict for u resolved as shift
+    $end            reduce using rule 4 (capicua -> u .)
+    z               shift and go to state 2
+    u               shift and go to state 3
+
+  ! z               [ reduce using rule 4 (capicua -> u .) ]
+  ! u               [ reduce using rule 4 (capicua -> u .) ]
+  ! u               [ reduce using rule 5 (capicua -> .) ]
+
+    capicua                        shift and go to state 5
+
+state 4
+
+    (1) capicua -> z capicua . z
+
+    z               shift and go to state 6
+
+
+state 5
+
+    (2) capicua -> u capicua . u
+
+    u               shift and go to state 7
+
+
+state 6
+
+    (1) capicua -> z capicua z .
+
+    $end            reduce using rule 1 (capicua -> z capicua z .)
+    z               reduce using rule 1 (capicua -> z capicua z .)
+    u               reduce using rule 1 (capicua -> z capicua z .)
+
+
+state 7
+
+    (2) capicua -> u capicua u .
+
+    $end            reduce using rule 2 (capicua -> u capicua u .)
+    z               reduce using rule 2 (capicua -> u capicua u .)
+    u               reduce using rule 2 (capicua -> u capicua u .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for z in state 2 resolved as shift
+WARNING: shift/reduce conflict for u in state 2 resolved as shift
+WARNING: shift/reduce conflict for z in state 2 resolved as shift
+WARNING: shift/reduce conflict for z in state 3 resolved as shift
+WARNING: shift/reduce conflict for u in state 3 resolved as shift
+WARNING: shift/reduce conflict for u in state 3 resolved as shift

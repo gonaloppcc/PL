@@ -1,0 +1,1 @@
+# Verificar se um ficheiro em xml está bem estruturado

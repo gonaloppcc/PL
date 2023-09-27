@@ -1,0 +1,150 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> Lista
+Rule 1     Lista -> PA PF
+Rule 2     Lista -> PA NUM Elems PF
+Rule 3     Elems -> Elem Resto
+Rule 4     Resto -> <empty>
+Rule 5     Resto -> VIRG Elem
+Rule 6     Elem -> NUM
+Rule 7     Elem -> Lista
+
+Terminals, with rules where they appear
+
+NUM                  : 2 6
+PA                   : 1 2
+PF                   : 1 2
+VIRG                 : 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+Elem                 : 3 5
+Elems                : 2
+Lista                : 7 0
+Resto                : 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Lista
+    (1) Lista -> . PA PF
+    (2) Lista -> . PA NUM Elems PF
+
+    PA              shift and go to state 2
+
+    Lista                          shift and go to state 1
+
+state 1
+
+    (0) S' -> Lista .
+
+
+
+state 2
+
+    (1) Lista -> PA . PF
+    (2) Lista -> PA . NUM Elems PF
+
+    PF              shift and go to state 3
+    NUM             shift and go to state 4
+
+
+state 3
+
+    (1) Lista -> PA PF .
+
+    $end            reduce using rule 1 (Lista -> PA PF .)
+    VIRG            reduce using rule 1 (Lista -> PA PF .)
+    PF              reduce using rule 1 (Lista -> PA PF .)
+
+
+state 4
+
+    (2) Lista -> PA NUM . Elems PF
+    (3) Elems -> . Elem Resto
+    (6) Elem -> . NUM
+    (7) Elem -> . Lista
+    (1) Lista -> . PA PF
+    (2) Lista -> . PA NUM Elems PF
+
+    NUM             shift and go to state 5
+    PA              shift and go to state 2
+
+    Elems                          shift and go to state 6
+    Elem                           shift and go to state 7
+    Lista                          shift and go to state 8
+
+state 5
+
+    (6) Elem -> NUM .
+
+    VIRG            reduce using rule 6 (Elem -> NUM .)
+    PF              reduce using rule 6 (Elem -> NUM .)
+
+
+state 6
+
+    (2) Lista -> PA NUM Elems . PF
+
+    PF              shift and go to state 9
+
+
+state 7
+
+    (3) Elems -> Elem . Resto
+    (4) Resto -> .
+    (5) Resto -> . VIRG Elem
+
+    PF              reduce using rule 4 (Resto -> .)
+    VIRG            shift and go to state 11
+
+    Resto                          shift and go to state 10
+
+state 8
+
+    (7) Elem -> Lista .
+
+    VIRG            reduce using rule 7 (Elem -> Lista .)
+    PF              reduce using rule 7 (Elem -> Lista .)
+
+
+state 9
+
+    (2) Lista -> PA NUM Elems PF .
+
+    $end            reduce using rule 2 (Lista -> PA NUM Elems PF .)
+    VIRG            reduce using rule 2 (Lista -> PA NUM Elems PF .)
+    PF              reduce using rule 2 (Lista -> PA NUM Elems PF .)
+
+
+state 10
+
+    (3) Elems -> Elem Resto .
+
+    PF              reduce using rule 3 (Elems -> Elem Resto .)
+
+
+state 11
+
+    (5) Resto -> VIRG . Elem
+    (6) Elem -> . NUM
+    (7) Elem -> . Lista
+    (1) Lista -> . PA PF
+    (2) Lista -> . PA NUM Elems PF
+
+    NUM             shift and go to state 5
+    PA              shift and go to state 2
+
+    Elem                           shift and go to state 12
+    Lista                          shift and go to state 8
+
+state 12
+
+    (5) Resto -> VIRG Elem .
+
+    PF              reduce using rule 5 (Resto -> VIRG Elem .)
+

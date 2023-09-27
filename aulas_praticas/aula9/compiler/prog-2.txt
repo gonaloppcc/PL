@@ -1,0 +1,4 @@
+int idade
+str nome
+
+print("Introduziste: ", idade, "e", nome)

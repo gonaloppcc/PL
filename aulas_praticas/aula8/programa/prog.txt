@@ -1,0 +1,8 @@
+print 2+3
+print 12
+a = 12
+read a
+b= 2*a+b
+print b+1
+dump
+end

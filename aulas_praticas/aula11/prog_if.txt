@@ -1,0 +1,12 @@
+int a, b, c
+a = int(input("Introduza um inteiro: \n"))
+b = int(input("Introduza um inteiro: \n"))
+c = int(input("Introduza um inteiro: \n"))
+
+if (a > b) {
+    if (a > c) print(a)
+    else print(c)
+} else {
+    if (b > c) print(b)
+    else print(c)
+}

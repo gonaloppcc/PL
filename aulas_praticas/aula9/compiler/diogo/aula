@@ -1,0 +1,96 @@
+# COMPILADOR
+
+O compilador deve ser capaz de reconhecer os seguintes 3 programas
+
+```
+
+print("Olá!")
+
+```
+
+
+```
+
+int idade
+str nome
+
+idade = int(input("Introduza..."))
+nome = input
+print("Introduziste: ", idade, "e", nome)
+
+
+```
+
+
+```
+
+int n1, n2
+
+n1=int(input("Introduza 1 inteiro:"))
+n2 = "
+
+if(n1 > n2)
+    print("O maior é:",n1)
+else 
+    print(("O maior é:",n2))
+
+
+```
+
+# Linguagens
+
+```
+T = {int, str, id, input, print, '=', '(',')'}
+
+Program -> Declarations Statements # Declarações e frases
+
+Declarations -> Declarations Declaration
+             |
+
+Declaration -> Type IdList
+
+Type -> Int | str
+
+IdList -> id
+        | IdList ',' id
+
+Statements -> Statements Statement
+            | Statement
+
+Statement -> Atrib 
+            | Print
+
+Atrib -> id = Exp
+
+Print -> PRINT '(' PrintArgs ')'
+
+PrintArgs -> PrintArgs ',' PrintArg
+          | PrintArg
+
+PrintArg -> id | str | Exp
+
+Exp -> input '(' str ')'
+    | int '('Exp')'
+```
+
+Part lógica, para os if's
+
+Statement -> IF '(' Cond ')' CondStatements ELSE
+
+Else -> 
+     | ELSE CondStatements
+
+CondStatements -> Statement
+               | '{' Statements'}'
+
+# Para dar prioridades
+Cond -> Cond OR Cond2
+     | Cond2
+
+Cond2 -> Cond2 AND Cond3
+        | Cond3
+    
+Cond3 -> NOT ExpRel
+        | ExpRel
+ExpRel -> Exp '>' Exp
+        | ...

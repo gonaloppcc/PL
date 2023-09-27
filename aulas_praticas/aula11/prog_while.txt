@@ -1,0 +1,9 @@
+int acc, n
+n = int(input("Introduza um inteiro: \n"))
+
+while(n > 0) {
+    acc = acc + n
+    n = n - 1
+}
+
+print("Somatório:", acc)

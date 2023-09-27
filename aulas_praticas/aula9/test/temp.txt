@@ -1,0 +1,9 @@
+int a, r, c
+str s
+
+print(8)
+
+a = 2
+
+s = 5 *r + 32
+print(s)
